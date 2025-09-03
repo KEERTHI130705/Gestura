@@ -1,4 +1,3 @@
-
 import cv2
 import numpy as np
 import tensorflow as tf
@@ -23,11 +22,14 @@ offset = 20
 
 
 # Labels
-labels = ["A", "B", "C","D", "E", "F", "G", "I", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y","Z","H","N"]
+labels = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y","Z"]
 
 
 while True:
     success, img = cap.read()
+    if not success or img is None:
+        print("Failed to capture image from camera.")
+        break
     imgOutput = img.copy()
     hands, img = detector.findHands(img)
 
