@@ -9,14 +9,19 @@ import numpy as np
 from fastapi import FastAPI, Response
 from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
-from starlette.responses import EventSourceResponse
+from sse_starlette.sse import EventSourceResponse
 
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 
 # Local imports from existing project
 import sys
-sys.path.append('/workspace')
+from pathlib import Path
+
+# Resolve repo root so imports and data files work cross-platform
+REPO_ROOT = Path(__file__).resolve().parents[2]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.append(str(REPO_ROOT))
 import hand_detector2 as hdm
 
 try:
@@ -63,7 +68,8 @@ class Recognizer:
                 pass
 
     def _load_model(self) -> None:
-        data = pd.read_csv('/workspace/hand_signals.csv')
+        csv_path = REPO_ROOT / 'hand_signals.csv'
+        data = pd.read_csv(csv_path)
         data = data.loc[:, ~data.columns.str.contains('^Unnamed')]
         X = data.drop('letter', axis=1)
         y = data['letter']
