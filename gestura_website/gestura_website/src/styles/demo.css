@@ -1,0 +1,47 @@
+.demo {
+  padding: 80px 20px;
+  background: linear-gradient(to bottom, #1a1a2e, #000);
+  text-align: center;
+}
+
+.demo-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.demo-title {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.demo-description {
+  font-size: 1.1rem;
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.demo-description span {
+  color: #00ebef;
+  font-weight: 600;
+}
+
+.demo-button {
+  display: inline-block;
+  background: #33a3ba;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.demo-button:hover {
+  background: #06788f;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px #002020;
+}

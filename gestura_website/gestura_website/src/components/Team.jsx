@@ -1,0 +1,50 @@
+import React from "react";
+import "../styles/team.css";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+
+const Team = () => {
+  return (
+    <section className="team" id="team">
+      <h2 className="team-title">Meet Our Team</h2>
+      <div className="team-container">
+        
+        {/* Member 1 */}
+        <div className="team-member">
+          <div className="member-pic">
+            <img src="/team/member1.jpg" alt="Keerthi" />
+          </div>
+          <h3 className="member-name">Keerthi Harsha</h3>
+          <p className="member-role">AI/ML & Backend Developer</p>
+          <div className="member-links">
+            <a href="https://linkedin.com/in/keerthi-linkedin" target="_blank" rel="noreferrer">
+              <FaLinkedin />
+            </a>
+            <a href="https://github.com/keerthi-github" target="_blank" rel="noreferrer">
+              <FaGithub />
+            </a>
+          </div>
+        </div>
+
+        {/* Member 2 */}
+        <div className="team-member">
+          <div className="member-pic">
+            <img src="/team/member2.jpg" alt="Teammate" />
+          </div>
+          <h3 className="member-name">Preethi</h3>
+          <p className="member-role">Frontend & Deployment</p>
+          <div className="member-links">
+            <a href="https://linkedin.com/in/teammate-linkedin" target="_blank" rel="noreferrer">
+              <FaLinkedin />
+            </a>
+            <a href="https://github.com/teammate-github" target="_blank" rel="noreferrer">
+              <FaGithub />
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default Team;
