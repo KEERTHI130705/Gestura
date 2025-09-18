@@ -58,3 +58,11 @@
   background: #0c7186;
   transform: translateY(-3px);
 }
+
+@media (max-width: 900px) {
+  /* Tablet styles */
+}
+
+@media (max-width: 600px) {
+  /* Mobile styles */
+}

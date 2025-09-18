@@ -10,11 +10,12 @@ import io
 import pygame
 import warnings
 from spellchecker import SpellChecker  # 🔥 autocorrect
+import streamlit as st
 
-# Ignore all warnings
+# Ignore warnings
 warnings.filterwarnings("ignore")
 
-# Read and process data
+# Load dataset
 data = pd.read_csv('hand_signals.csv')
 data = data.loc[:, ~data.columns.str.contains('^Unnamed')]
 
@@ -29,139 +30,116 @@ model.fit(X_train, y_train)
 spell = SpellChecker()  # autocorrect engine
 
 def speech(text):
-    """
-    Converts a piece of text into speech using pyGame and gTTS libraries
-    """
+    """Convert text to speech and return mp3 binary for Streamlit to play"""
     myobj = gTTS(text=text, lang='en', slow=False)
     mp3_fp = io.BytesIO()
     myobj.write_to_fp(mp3_fp)
     mp3_fp.seek(0)
-
-    pygame.mixer.music.load(mp3_fp, 'mp3')
-    pygame.mixer.music.play()
-
-    while pygame.mixer.music.get_busy():
-        pygame.time.Clock().tick(10)
+    return mp3_fp
 
 def main():
-    pygame.mixer.init()
-    signal_data = {}
-    cap = cv2.VideoCapture(0)
-    detector = hdm.handDetector()
-    letters = []
-    word = ''
-    words = []
-    sentence = []  # Add this at the start of main()
-    start = time.time()
-    end = time.time()
+    st.title("✋ Hand Gesture to Speech Recognition")
+    st.markdown("Real-time **hand signal recognition → autocorrect → speech output**")
 
-    stable_letter = None
-    stable_count = 0
-    stable_threshold = 15  # Number of consecutive frames for stability
+    run_app = st.checkbox("▶ Start Camera", value=False)
 
-    while True:
-        success, img = cap.read()
-        img = cv2.flip(img, 1)
-        key = cv2.waitKey(1) & 0xFF
+    if run_app:
+        stframe = st.empty()
+        cap = cv2.VideoCapture(0)
+        detector = hdm.handDetector()
 
-        img = detector.find_hands(img, draw=False)
-        landmarks = detector.find_position(img)
+        signal_data = {}
+        word = ''
+        words = []
+        sentence = []
 
-        confidence_threshold = .7
+        start = time.time()
+        end = time.time()
 
-        # No hands → check idle time
-        if not landmarks:
-            start = time.time()
-            idle_timer = start - end
+        stable_letter = None
+        stable_count = 0
+        stable_threshold = 15
+        confidence_threshold = 0.7
 
-            # End of word
-            if idle_timer >= 3 and word != '':
-                if word[-1] != ' ':
-                    corrected = spell.correction(word.strip())
-                    if corrected is None:
-                        corrected = word.strip()
-                    print(f"Raw: {word}  |  Corrected: {corrected}")
-                    speech(corrected)
-                    words.append(corrected)
-                    sentence.append(corrected)  # Add word to sentence
-                    word = ''
+        while run_app:
+            success, img = cap.read()
+            if not success:
+                st.warning("⚠ Camera not detected.")
+                break
 
-            # End of sentence (longer pause)
-            if idle_timer >= 6 and sentence:
-                final_sentence = " ".join(sentence)
-                print("\nFinal Recognized Sentence:", final_sentence)
-                speech(final_sentence)
-                sentence = []  # Reset for next sentence
+            img = cv2.flip(img, 1)
+            img = detector.find_hands(img, draw=False)
+            landmarks = detector.find_position(img)
 
-            # Reset stability when no hand
-            stable_letter = None
-            stable_count = 0
+            # idle check
+            if not landmarks:
+                start = time.time()
+                idle_timer = start - end
 
-        if landmarks and len(landmarks) == 1:
-            lmlist = landmarks[0][1]
-            end = time.time()
+                if idle_timer >= 3 and word != '':
+                    if word[-1] != ' ':
+                        corrected = spell.correction(word.strip())
+                        if corrected is None:
+                            corrected = word.strip()
+                        st.write(f"Raw: {word} | Corrected: {corrected}")
+                        words.append(corrected)
+                        sentence.append(corrected)
+                        word = ''
 
-            p1 = (min(lmlist[x][1] for x in range(len(lmlist))) - 25,
-                  min(lmlist[x][2] for x in range(len(lmlist))) - 25)
-            p2 = (max(lmlist[x][1] for x in range(len(lmlist))) + 25,
-                  max(lmlist[x][2] for x in range(len(lmlist))) + 25)
-            cv2.rectangle(img, p1, p2, (255, 255, 255), 3)
+                if idle_timer >= 6 and sentence:
+                    final_sentence = " ".join(sentence)
+                    st.success(f"✨ Final Recognized Sentence: {final_sentence}")
+                    st.audio(speech(final_sentence), format="audio/mp3")
+                    sentence = []
 
-            location_vector = np.array([coord for lm in lmlist for coord in lm[1:3]]).reshape(1, -1)
+                stable_letter = None
+                stable_count = 0
 
-            probabilities = model.predict_proba(location_vector)
-            max_prob = np.max(probabilities)
-            if max_prob > confidence_threshold:
-                predicted_letter = model.predict(location_vector)[0]
+            # hand detected
+            if landmarks and len(landmarks) == 1:
+                end = time.time()
+                lmlist = landmarks[0][1]
 
-                # Stability logic
-                if stable_letter == predicted_letter:
-                    stable_count += 1
-                else:
-                    stable_letter = predicted_letter
-                    stable_count = 1
+                p1 = (min(lmlist[x][1] for x in range(len(lmlist))) - 25,
+                      min(lmlist[x][2] for x in range(len(lmlist))) - 25)
+                p2 = (max(lmlist[x][1] for x in range(len(lmlist))) + 25,
+                      max(lmlist[x][2] for x in range(len(lmlist))) + 25)
+                cv2.rectangle(img, p1, p2, (255, 255, 255), 3)
 
-                # Only append if stable for threshold frames
-                if stable_count == stable_threshold:
-                    if not word or word[-1] != stable_letter:
-                        word += stable_letter
-                        print("Building:", word)
-                    stable_count = 0  # Reset after appending
+                location_vector = np.array([coord for lm in lmlist for coord in lm[1:3]]).reshape(1, -1)
 
-                cv2.putText(img, predicted_letter, (p1[0], p1[1] - 10),
-                            cv2.QT_FONT_NORMAL, 3, (255, 255, 255), 3)
+                probabilities = model.predict_proba(location_vector)
+                max_prob = np.max(probabilities)
+                if max_prob > confidence_threshold:
+                    predicted_letter = model.predict(location_vector)[0]
 
-        # Show the frame with predictions
-        cv2.imshow("Image", img)
+                    if stable_letter == predicted_letter:
+                        stable_count += 1
+                    else:
+                        stable_letter = predicted_letter
+                        stable_count = 1
 
-        # Collect signals if 'c' pressed
-        if key == ord('c') and landmarks:
-            for item in lmlist:
-                if f'{item[0]}x' in signal_data:
-                    signal_data[f'{item[0]}x'].append(item[1])
-                else:
-                    signal_data[f'{item[0]}x'] = [item[1]]
-                if f'{item[0]}y' in signal_data:
-                    signal_data[f'{item[0]}y'].append(item[2])
-                else:
-                    signal_data[f'{item[0]}y'] = [item[2]]
+                    if stable_count == stable_threshold:
+                        if not word or word[-1] != stable_letter:
+                            word += stable_letter
+                            st.write(f"Building Word: {word}")
+                        stable_count = 0
 
-        if key == ord('q'):
-            break
+                    cv2.putText(img, predicted_letter, (p1[0], p1[1] - 10),
+                                cv2.QT_FONT_NORMAL, 3, (255, 255, 255), 3)
 
-    # Save extra signals if collected
-    if signal_data:
-        signal_data['letter'] = ['a'] * len(signal_data['0x'])
-        new_signals = pd.DataFrame(signal_data)
-        existing_signals = pd.read_csv('hand_signals.csv')
-        updated_stats = pd.concat([existing_signals, new_signals], ignore_index=True)
-        updated_stats.to_csv('hand_signals.csv', index=False)
+            # display live frame
+            stframe.image(cv2.cvtColor(img, cv2.COLOR_BGR2RGB), channels="RGB")
 
-    # Final sentence after quitting
-    if words:
-        final_sentence = " ".join(words)
-        print("\n✨ Final Recognized Sentence:", final_sentence)
-        speech(final_sentence)
+        cap.release()
 
-if __name__ == '__main__':
+        if words:
+            final_sentence = " ".join(words)
+            st.success(f"✨ Final Recognized Sentence: {final_sentence}")
+            st.audio(speech(final_sentence), format="audio/mp3")
+
+if __name__ == "__main__":
     main()
+
+# To run the app, use the command:
+# streamlit run letter_interpreter.py

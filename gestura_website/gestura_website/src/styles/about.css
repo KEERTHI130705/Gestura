@@ -59,3 +59,11 @@
   font-size: 1rem;
   color: #cccccc;
 }
+
+@media (max-width: 900px) {
+  /* Tablet styles */
+}
+
+@media (max-width: 600px) {
+  /* Mobile styles */
+}

@@ -34,10 +34,10 @@ const Team = () => {
           <h3 className="member-name">Preethi</h3>
           <p className="member-role">AI/ML & Backend Developer</p>
           <div className="member-links">
-            <a href="https://linkedin.com/in/teammate-linkedin" target="_blank" rel="noreferrer">
+            <a href="https://linkedin.com/in/oruganti-preethi-19268b368" target="_blank" rel="noreferrer">
               <FaLinkedin />
             </a>
-            <a href="https://github.com/teammate-github" target="_blank" rel="noreferrer">
+            <a href="https://github.com/o-preethi" target="_blank" rel="noreferrer">
               <FaGithub />
             </a>
           </div>

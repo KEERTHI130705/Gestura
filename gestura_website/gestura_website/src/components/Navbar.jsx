@@ -1,9 +1,14 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { FaBars, FaTimes } from "react-icons/fa";
 import "../styles/navbar.css";
 
 export default function Navbar({ sectionRefs }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const handleNav = (section) => {
     sectionRefs[section]?.current?.scrollIntoView({ behavior: "smooth" });
+    setMenuOpen(false); // close menu after click
   };
 
   return (
@@ -17,7 +22,13 @@ export default function Navbar({ sectionRefs }) {
         <span className="navbar-logo" onClick={() => handleNav("about")}>
           Gestura
         </span>
-        <ul className="navbar-links">
+        <button
+          className="navbar-hamburger"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+        <ul className={`navbar-links ${menuOpen ? "open" : ""}`}>
           <li>
             <button onClick={() => handleNav("about")}>About</button>
           </li>

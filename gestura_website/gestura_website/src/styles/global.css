@@ -13,3 +13,11 @@ h2 {
   font-weight: 600;
   color: #1c92d2;
 }
+
+@media (max-width: 900px) {
+  /* Tablet styles */
+}
+
+@media (max-width: 600px) {
+  /* Mobile styles */
+}
