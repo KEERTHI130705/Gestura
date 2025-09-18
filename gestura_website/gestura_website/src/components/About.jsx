@@ -18,7 +18,7 @@ function About() {
 
       <div className="about-cards">
         <div className="about-card">
-          <img src="/pictures/signlanguage.png" alt="Sign Language Recognition" />
+          <img src="/assets/signlanguage.png" alt="Sign Language Recognition" />
           <h3>Sign Language Recognition</h3>
           <p>
             Converts hand signs into meaningful text instantly with accuracy.
@@ -26,7 +26,7 @@ function About() {
         </div>
 
         <div className="about-card">
-          <img src="/pictures/text&speech.png" alt="Text-to-Speech" />
+          <img src="/assets/text&speech.png" alt="Text-to-Speech" />
           <h3>Text & Speech Output</h3>
           <p>
             Translates recognized signs into clear speech for better interaction.
@@ -34,7 +34,7 @@ function About() {
         </div>
 
         <div className="about-card">
-          <img src="/pictures/disability.png" alt="Accessibility First" />
+          <img src="/assets/disability.png" alt="Accessibility First" />
           <h3>Accessibility First</h3>
           <p>
             Created to support people with speech and hearing disabilities, 

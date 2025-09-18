@@ -12,13 +12,13 @@ const TechStack = () => {
           <h3>Frontend</h3>
           <div className="tech-logos">
             <div className="logo-circle">
-              <img src="/pictures/react.png" alt="React" />
+              <img src="/assets/react.png" alt="React" />
             </div>
             <div className="logo-circle">
-              <img src="/pictures/html.png" alt="HTML5" />
+              <img src="/assets/html.png" alt="HTML5" />
             </div>
             <div className="logo-circle">
-              <img src="/pictures/css.png" alt="CSS3" />
+              <img src="/assets/css.png" alt="CSS3" />
             </div>
           </div>
         </div>
@@ -28,13 +28,13 @@ const TechStack = () => {
           <h3>AI / Backend</h3>
           <div className="tech-logos">
             <div className="logo-circle">
-              <img src="/pictures/python.png" alt="Python" />
+              <img src="/assets/python.png" alt="Python" />
             </div>
             <div className="logo-circle">
-              <img src="/pictures/opencv.png" alt="OpenCV" />
+              <img src="/assets/opencv.png" alt="OpenCV" />
             </div>
             <div className="logo-circle">
-              <img src="/pictures/scikit.png" alt="Scikit-learn" />
+              <img src="/assets/scikit.png" alt="Scikit-learn" />
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@ const TechStack = () => {
               <img src="/logos/streamlit.png" alt="Streamlit" />
             </div>
             <div className="logo-circle">
-              <img src="/pictures/github.png" alt="GitHub" />
+              <img src="/assets/github.png" alt="GitHub" />
             </div>
             <div className="logo-circle">
               <img src="/logos/vercel.png" alt="Vercel" />
