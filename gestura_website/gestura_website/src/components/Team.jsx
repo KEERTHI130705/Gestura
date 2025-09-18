@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/team.css";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import keerthiPic from "../assets/keerthi.png";
+import preethiPic from "../assets/preethi.png";
 
 const Team = () => {
   return (
@@ -29,7 +30,7 @@ const Team = () => {
         {/* Member 2 */}
         <div className="team-member">
           <div className="member-pic">
-            <img src="/team/member2.jpg" alt="Teammate" />
+            <img src={preethiPic} alt="Teammate" />
           </div>
           <h3 className="member-name">Preethi</h3>
           <p className="member-role">AI/ML & Backend Developer</p>
