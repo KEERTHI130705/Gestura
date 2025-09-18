@@ -108,7 +108,7 @@
 }
 
 /* Mobile view */
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   .navbar-content {
     padding: 0.5rem 1rem;
   }
@@ -120,7 +120,12 @@
   display: flex;
   align-items: center;
   justify-content: left;
-  padding-left: 50px;
+  padding-left: 0px;
+}
+.hero-content {
+  text-align: left;
+  color: #fff;
+  font-size: 30px;
 }
   .navbar-hamburger {
     display: block;
