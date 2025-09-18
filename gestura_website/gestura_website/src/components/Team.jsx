@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/team.css";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
+import keerthiPic from "../assets/keerthi.png";
 
 const Team = () => {
   return (
@@ -11,15 +12,15 @@ const Team = () => {
         {/* Member 1 */}
         <div className="team-member">
           <div className="member-pic">
-            <img src="/team/member1.jpg" alt="Keerthi" />
+            <img src={keerthiPic} alt="Keerthi" />
           </div>
           <h3 className="member-name">Keerthi Harsha</h3>
-          <p className="member-role">AI/ML & Backend Developer</p>
+          <p className="member-role">Frontend & Deployment</p>
           <div className="member-links">
-            <a href="https://linkedin.com/in/keerthi-linkedin" target="_blank" rel="noreferrer">
+            <a href="https://linkedin.com/in/keerthi-harsha-alle" target="_blank" rel="noreferrer">
               <FaLinkedin />
             </a>
-            <a href="https://github.com/keerthi-github" target="_blank" rel="noreferrer">
+            <a href="https://github.com/keerthi130705" target="_blank" rel="noreferrer">
               <FaGithub />
             </a>
           </div>
@@ -31,7 +32,7 @@ const Team = () => {
             <img src="/team/member2.jpg" alt="Teammate" />
           </div>
           <h3 className="member-name">Preethi</h3>
-          <p className="member-role">Frontend & Deployment</p>
+          <p className="member-role">AI/ML & Backend Developer</p>
           <div className="member-links">
             <a href="https://linkedin.com/in/teammate-linkedin" target="_blank" rel="noreferrer">
               <FaLinkedin />

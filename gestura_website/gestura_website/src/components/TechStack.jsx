@@ -1,5 +1,12 @@
 import React from "react";
 import "../styles/techstack.css";
+import pythonLogo from "../assets/python.png";
+import opencvLogo from "../assets/opencv.png";
+import scikitLogo from "../assets/scikit.png";
+import reactLogo from "../assets/react.png";
+import htmlLogo from "../assets/html.png";
+import cssLogo from "../assets/css.png";
+import githubLogo from "../assets/github.png";
 
 const TechStack = () => {
   return (
@@ -12,13 +19,13 @@ const TechStack = () => {
           <h3>Frontend</h3>
           <div className="tech-logos">
             <div className="logo-circle">
-              <img src="/assets/react.png" alt="React" />
+              <img src={reactLogo} alt="React" />
             </div>
             <div className="logo-circle">
-              <img src="/assets/html.png" alt="HTML5" />
+              <img src={htmlLogo} alt="HTML5" />
             </div>
             <div className="logo-circle">
-              <img src="/assets/css.png" alt="CSS3" />
+              <img src={cssLogo} alt="CSS3" />
             </div>
           </div>
         </div>
@@ -28,13 +35,13 @@ const TechStack = () => {
           <h3>AI / Backend</h3>
           <div className="tech-logos">
             <div className="logo-circle">
-              <img src="/assets/python.png" alt="Python" />
+              <img src={pythonLogo} alt="Python" />
             </div>
             <div className="logo-circle">
-              <img src="/assets/opencv.png" alt="OpenCV" />
+              <img src={opencvLogo} alt="OpenCV" />
             </div>
             <div className="logo-circle">
-              <img src="/assets/scikit.png" alt="Scikit-learn" />
+              <img src={scikitLogo} alt="Scikit-learn" />
             </div>
           </div>
         </div>
@@ -47,7 +54,7 @@ const TechStack = () => {
               <img src="/logos/streamlit.png" alt="Streamlit" />
             </div>
             <div className="logo-circle">
-              <img src="/assets/github.png" alt="GitHub" />
+              <img src={githubLogo} alt="GitHub" />
             </div>
             <div className="logo-circle">
               <img src="/logos/vercel.png" alt="Vercel" />

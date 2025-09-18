@@ -1,5 +1,8 @@
 import React from "react";
 import "../styles/about.css";
+import textSpeechImg from "../assets/text&speech.png";
+import signLanguageImg from "../assets/signlanguage.png";
+import disabilityImg from "../assets/disability.png";
 
 function About() {
   return (
@@ -18,7 +21,7 @@ function About() {
 
       <div className="about-cards">
         <div className="about-card">
-          <img src="/assets/signlanguage.png" alt="Sign Language Recognition" />
+          <img src={signLanguageImg} alt="Sign Language Recognition" />
           <h3>Sign Language Recognition</h3>
           <p>
             Converts hand signs into meaningful text instantly with accuracy.
@@ -26,7 +29,7 @@ function About() {
         </div>
 
         <div className="about-card">
-          <img src="/assets/text&speech.png" alt="Text-to-Speech" />
+          <img src={textSpeechImg} alt="Text-to-Speech" />
           <h3>Text & Speech Output</h3>
           <p>
             Translates recognized signs into clear speech for better interaction.
@@ -34,7 +37,7 @@ function About() {
         </div>
 
         <div className="about-card">
-          <img src="/assets/disability.png" alt="Accessibility First" />
+          <img src={disabilityImg} alt="Accessibility First" />
           <h3>Accessibility First</h3>
           <p>
             Created to support people with speech and hearing disabilities, 

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import "../styles/hero.css";
+import React from "react";
 
 export default function Hero({ onExplore }) {
   return (
