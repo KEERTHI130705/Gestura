@@ -17,7 +17,7 @@ from sklearn.linear_model import LogisticRegression
 # Local imports from existing project
 import sys
 sys.path.append('/workspace')
-import hand_detector2 as hdm
+import streamlit_demo.hand_detector2 as hdm
 
 try:
     import pyvirtualcam

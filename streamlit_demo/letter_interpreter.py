@@ -1,4 +1,4 @@
-import hand_detector2 as hdm
+import streamlit_demo.hand_detector2 as hdm
 import cv2
 import pandas as pd
 import numpy as np
@@ -142,4 +142,4 @@ if __name__ == "__main__":
     main()
 
 # To run the app, use the command:
-# streamlit run letter_interpreter.py
+# streamlit run letter_interpreter.py    

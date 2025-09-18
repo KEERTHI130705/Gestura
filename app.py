@@ -1,5 +1,5 @@
 import streamlit as st
-from letter_interpreter import run_interpreter
+from streamlit_demo.letter_interpreter import run_interpreter
 
 # -----------------
 # Streamlit UI
