@@ -112,6 +112,16 @@
   .navbar-content {
     padding: 0.5rem 1rem;
   }
+  .hero-bg {
+  min-height: 100vh;
+  background:
+    linear-gradient(120deg, rgba(15,32,39,0.7), rgba(44,83,100,0.7), rgba(28,146,210,0.6)),
+    url('../assets/hero.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding-left: 50px;
+}
   .navbar-hamburger {
     display: block;
   }
