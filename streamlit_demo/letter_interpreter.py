@@ -1,4 +1,4 @@
-import streamlit_demo.hand_detector2 as hdm
+import hand_detector2 as hdm
 import cv2
 import pandas as pd
 import numpy as np
