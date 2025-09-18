@@ -1,6 +1,8 @@
+/* Base navbar */
 .navbar {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 100;
   background: rgba(20, 30, 40, 0.5); /* transparent dark */
@@ -33,20 +35,8 @@
   padding: 0;
 }
 
-.navbar-links a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.1rem;
-  font-weight: 500;
-  transition: color 0.2s;
-}
-
-.navbar-links a:hover {
-  color: #1c92d2;
-}
-
 .navbar-links button {
-  background: rgba(28, 146, 210, 0.12); /* semi-transparent blue */
+  background: rgba(28, 146, 210, 0.12);
   border: none;
   color: #fff;
   font-size: 1.1rem;
@@ -64,7 +54,7 @@
   color: #1c92d2;
 }
 
-/* Desktop/tablet: show links, hide hamburger */
+/* Hamburger (hidden on desktop) */
 .navbar-hamburger {
   display: none;
 }
@@ -79,26 +69,32 @@
     font-size: 2rem;
     cursor: pointer;
     margin-left: 1rem;
-    z-index: 101;
+    z-index: 1001; /* above overlay */
   }
+
+  /* Desktop links hidden */
   .navbar-links {
-    position: absolute;
-    top: 60px;
+    display: none;
+  }
+
+  /* Mobile overlay */
+  .navbar-links.open {
+    position: fixed;
+    top: 0;
     right: 0;
+    height: 100vh;
+    width: 70vw;
+    max-width: 300px;
     background: rgba(20, 30, 40, 0.95);
     flex-direction: column;
     gap: 1rem;
-    width: 70vw;
-    max-width: 300px;
-    padding: 2rem 1rem;
+    padding: 5rem 1.5rem 2rem;
     border-radius: 0 0 0 24px;
-    box-shadow: 0 8px 32px #1c92d2;
-    display: none;
-    transition: right 0.3s;
-  }
-  .navbar-links.open {
+    box-shadow: -4px 0 20px rgba(28, 146, 210, 0.4);
     display: flex;
+    animation: slideIn 0.3s ease-out;
   }
+
   .navbar-links button {
     width: 100%;
     text-align: left;
@@ -108,12 +104,14 @@
   }
 }
 
-/* Hide links on mobile unless menu is open */
-@media (max-width: 600px) {
-  .navbar-links {
-    display: none;
+/* Smooth slide animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
   }
-  .navbar-links.open {
-    display: flex;
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }
