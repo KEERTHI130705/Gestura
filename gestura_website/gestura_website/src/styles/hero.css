@@ -120,7 +120,7 @@
   display: flex;
   align-items: center;
   justify-content: left;
-  padding-left: 0px;
+  padding-left: 50px;
 }
 .hero-content {
   text-align: left;
