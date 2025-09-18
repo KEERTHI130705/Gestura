@@ -1,13 +1,17 @@
 tensorflow==2.16.1
+mediapipe==0.10.13
 protobuf==4.25.3
-pygame
-pandas
-numpy
-scikit-learn
-opencv-python
-gtts
-pyspellchecker
+jax==0.4.28
+jaxlib==0.4.28
+opencv-python==4.11.0.86
+numpy==1.26.4
+matplotlib==3.10.6
+pillow==11.3.0
+scipy==1.16.2
+sounddevice==0.5.2
+streamlit==1.37.0
+
+
 
 
 #pip install -r Requirements.txt
-
