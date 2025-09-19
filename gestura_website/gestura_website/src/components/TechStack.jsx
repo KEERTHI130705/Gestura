@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/techstack.css";
 import pythonLogo from "../assets/python.png";
 import opencvLogo from "../assets/opencv.png";
-import scikitLogo from "../assets/scikit.png";
+import tensorflow from "../assets/tensorflow.png";
 import reactLogo from "../assets/react.png";
 import htmlLogo from "../assets/html.png";
 import cssLogo from "../assets/css.png";
@@ -43,7 +43,7 @@ const TechStack = () => {
               <img src={opencvLogo} alt="OpenCV" />
             </div>
             <div className="logo-circle">
-              <img src={scikitLogo} alt="Scikit-learn" />
+              <img src={tensorflow} alt="Scikit-learn" />
             </div>
           </div>
         </div>

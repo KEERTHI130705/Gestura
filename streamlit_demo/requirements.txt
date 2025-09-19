@@ -63,8 +63,8 @@ huggingface-hub==0.34.3
 hyperframe==6.1.0
 idna==3.10
 ifaddr==0.2.0
-jax==0.4.28
-jaxlib==0.4.28
+jax>=0.4.34
+jaxlib>=0.4.34
 Jinja2==3.1.4
 joblib==1.5.1
 jsonschema==4.25.1
