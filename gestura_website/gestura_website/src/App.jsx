@@ -6,13 +6,15 @@ import Team from "./components/Team";
 import Contact from "./components/Contact";
 import Navbar from "./components/Navbar";
 import TechStack from "./components/TechStack";
+import FutureScope from "./components/FutureScope"; // <-- Import FutureScope
 
 function App() {
   const aboutRef = useRef(null);
-  const techstackRef = useRef(null); // <-- Add this line
+  const techstackRef = useRef(null);
   const demoRef = useRef(null);
   const teamRef = useRef(null);
   const contactRef = useRef(null);
+  const futureScopeRef = useRef(null); // <-- Add ref for FutureScope
 
   const handleExplore = () => {
     aboutRef.current.scrollIntoView({ behavior: "smooth" });
@@ -24,7 +26,7 @@ function App() {
     demo: demoRef,
     team: teamRef,
     contact: contactRef,
-    
+    futureScope: futureScopeRef, // <-- Add to refs
   };
 
   return (
@@ -43,9 +45,11 @@ function App() {
       <div ref={teamRef}>
         <Team />
       </div>
-      <div ref={contactRef}>
-        <Contact />
+      <div ref={futureScopeRef}>
+        <FutureScope />
       </div>
+      
+
     </>
   );
 }

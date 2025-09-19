@@ -1,7 +1,7 @@
 .contact {
   padding: 60px 20px;
-  background: linear-gradient(to bottom, #1a1a2e, #000);
-  color: white;
+  background: rgba(27, 164, 209, 0.6);
+  color: rgb(255, 255, 255);
   text-align: center;
 }
 
@@ -46,7 +46,7 @@
   padding: 15px;
   border: none;
   border-radius: 10px;
-  background: #00d4ff;
+  background: #ffffff;
   color: #333;
   font-size: 1.1rem;
   font-weight: bold;
@@ -55,7 +55,7 @@
 }
 
 .contact-form button:hover {
-  background: #0c7186;
+  background: #0fd7ff;
   transform: translateY(-3px);
 }
 

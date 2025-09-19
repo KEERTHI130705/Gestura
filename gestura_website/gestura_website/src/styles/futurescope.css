@@ -1,0 +1,94 @@
+.future-scope-section {
+  padding: 70px 20px;
+  background: linear-gradient(to bottom, #1a1a2e, #000);
+  text-align: center;
+}
+
+.future-scope-title {
+  font-size: 2.3rem;
+  color: #fff;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.future-scope-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}
+
+.future-scope-card {
+  background: rgba(255,255,255,0.07);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(28,146,210,0.12);
+  padding: 32px 24px;
+  width: 270px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.future-scope-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 8px 32px #1c92d2;
+}
+
+.future-scope-icon {
+  font-size: 2.8rem;
+  margin-bottom: 18px;
+  color: #1c92d2;
+  background: rgba(255,255,255,0.12);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.future-scope-content h3 {
+  font-size: 1.25rem;
+  color: #fff;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.future-scope-content p {
+  font-size: 1rem;
+  color: #e0e0e0;
+  margin: 0;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .future-scope-cards {
+    gap: 20px;
+  }
+  .future-scope-card {
+    width: 220px;
+    padding: 24px 12px;
+  }
+  .future-scope-title {
+    font-size: 1.7rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .future-scope-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .future-scope-card {
+    width: 90vw;
+    padding: 18px 8px;
+  }
+  .future-scope-title {
+    font-size: 1.2rem;
+    margin-bottom: 22px;
+  }
+}
