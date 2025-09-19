@@ -16,7 +16,7 @@ import streamlit as st
 warnings.filterwarnings("ignore")
 
 # Load dataset
-data = pd.read_csv('hand_signals.csv')
+data = pd.read_csv("streamlit_demo/hand_signals.csv")
 data = data.loc[:, ~data.columns.str.contains('^Unnamed')]
 
 X = data.drop('letter', axis=1)
