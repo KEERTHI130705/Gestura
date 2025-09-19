@@ -7,6 +7,8 @@ import reactLogo from "../assets/react.png";
 import htmlLogo from "../assets/html.png";
 import cssLogo from "../assets/css.png";
 import githubLogo from "../assets/github.png";
+import streamlitLogo from "../assets/streamlit.png";
+import vercelLogo from "../assets/vercel.png";
 
 const TechStack = () => {
   return (
@@ -51,13 +53,13 @@ const TechStack = () => {
           <h3>Deployment</h3>
           <div className="tech-logos">
             <div className="logo-circle">
-              <img src="/logos/streamlit.png" alt="Streamlit" />
+              <img src={streamlitLogo} alt="Streamlit" />
             </div>
             <div className="logo-circle">
               <img src={githubLogo} alt="GitHub" />
             </div>
             <div className="logo-circle">
-              <img src="/logos/vercel.png" alt="Vercel" />
+              <img src={vercelLogo} alt="Vercel" />
             </div>
           </div>
         </div>
