@@ -19,7 +19,7 @@ export default function Navbar({ sectionRefs }) {
       transition={{ duration: 0.7 }}
     >
       <div className="navbar-content">
-        <span className="navbar-logo" onClick={() => handleNav("about")}>
+        <span className="navbar-logo" onClick={() => handleNav("home")}>
           Gestura
         </span>
         <button
@@ -29,6 +29,9 @@ export default function Navbar({ sectionRefs }) {
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
         <ul className={`navbar-links ${menuOpen ? "open" : ""}`}>
+          <li>
+            <button onClick={() => handleNav("home")}>Home</button>
+          </li>
           <li>
             <button onClick={() => handleNav("about")}>About</button>
           </li>
@@ -42,8 +45,10 @@ export default function Navbar({ sectionRefs }) {
             <button onClick={() => handleNav("team")}>Team</button>
           </li>
           <li>
-            <button onClick={() => handleNav("contact")}>Contact</button>
+            <button onClick={() => handleNav("futureScope")}>Future Scope</button>
           </li>
+          
+  
         </ul>
       </div>
     </motion.nav>
