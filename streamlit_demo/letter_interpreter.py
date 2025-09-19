@@ -143,3 +143,5 @@ if __name__ == "__main__":
 
 # To run the app, use the command:
 # streamlit run letter_interpreter.py    
+
+#pip list
